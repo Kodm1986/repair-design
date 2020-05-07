@@ -1,9 +1,25 @@
 .hero {
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	background: $dark url('../../img/hero-bg.jpg') no-repeat center / cover;
 	height: 100vh;
 	padding-top: 100px;
+	color: $light;
 
+	&__content {
+		max-width: 670px;
+	}
+
+	&__button {
+		margin-right: 20px;
+	}
+
+	&__text {
+		font-size: 22px;
+		max-width: 550px;
+	}
 
 	&__instagram {
 		max-width: 80px;
@@ -11,6 +27,21 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+	}
+
+	&__scroll-down {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		min-width: 247px;
+		min-height: 97px;
+		background: $dark;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: $light;
 	}
 }
 
@@ -30,4 +61,11 @@
 
 .title {
 	margin: 0;
+	font-family: 'Yeseva One', cursive;
+	text-transform: uppercase;
+	font-size: 40px;
+
+	&_primary {
+		color: $primary;
+	}
 }

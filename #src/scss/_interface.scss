@@ -7,4 +7,10 @@
 	&_primary {
 		background-color: $primary;
 	}
+
+	&_outline {
+		border: 1px solid $light;
+		background-color: transparent;
+		color: $light
+	}
 }
