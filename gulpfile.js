@@ -1,4 +1,3 @@
-
 let project_folder = require("path").basename(__dirname);
 let source_folder = "#src";
 
@@ -17,7 +16,7 @@ let path = {
 		css: source_folder + "/scss/style.scss",
 		js: source_folder + "/js/script.js",
 		img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
-		fonts: source_folder + "/fonts/*.ttf",
+		fonts: source_folder + "/fonts/**/*.ttf",
 	},
 	watch: {
 		html: source_folder + "/**/*.html",
@@ -28,7 +27,10 @@ let path = {
 	clean: "./" + project_folder + "/"
 }
 
-let { src, dest } = require('gulp'),
+let {
+	src,
+	dest
+} = require('gulp'),
 	gulp = require('gulp'),
 	browsersync = require("browser-sync").create(),
 	fileinclude = require("gulp-file-include"),
@@ -122,7 +124,9 @@ function images() {
 		.pipe(
 			imagemin({
 				progressive: true,
-				svgoPlugins: [{ removeViewBox: false }],
+				svgoPlugins: [{
+					removeViewBox: false
+				}],
 				interlaced: true,
 				optimizationLevel: 3 // 0 to 7
 			})
@@ -141,7 +145,7 @@ function fonts() {
 };
 
 gulp.task('otf2ttf', function () {
-	return src([source_folder + '/fonts/*.otf'])
+	return src([source_folder + '/fonts/**/*.otf'])
 		.pipe(fonter({
 			formats: ['ttf']
 		}))
@@ -153,12 +157,11 @@ gulp.task('svgSprite', function () {
 		.pipe(svgSprite({
 			mode: {
 				stack: {
-					sprite: "../icons/icons.svg",  //sprite file name
+					sprite: "../icons/icons.svg", //sprite file name
 					example: true
 				}
 			},
-		}
-		))
+		}))
 		.pipe(dest(path.build.img))
 })
 
